@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Heart Disease Dashboard</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    background: linear-gradient(135deg, #1f4037, #99f2c8);
+}
+.card {
+    border-radius: 15px;
+}
+h2 {
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container mt-5">
+<div class="card p-4 shadow-lg">
+
+<h2 class="text-center text-danger">❤️ Heart Disease Prediction Dashboard</h2>
+
+<form action="/predict" method="post">
+
+<div class="row">
+
+<div class="col-md-4 mt-2">
+<label>Age</label>
+<input type="number" name="Age" class="form-control" required>
+</div>
+
+<div class="col-md-4 mt-2">
+<label>Sex</label>
+<select name="Sex" class="form-control">
+<option>male</option>
+<option>female</option>
+</select>
+</div>
+
+<div class="col-md-4 mt-2">
+<label>Chest Pain</label>
+<select name="ChestPain" class="form-control">
+<option>typical</option>
+<option>asymptomatic</option>
+<option>non-anginal</option>
+<option>atypical</option>
+</select>
+</div>
+
+<div class="col-md-4 mt-2">
+<label>RestBP</label>
+<input type="number" name="RestBP" class="form-control">
+</div>
+
+<div class="col-md-4 mt-2">
+<label>Chol</label>
+<input type="number" name="Chol" class="form-control">
+</div>
+
+<div class="col-md-4 mt-2">
+<label>Fbs (0 or 1)</label>
+<input type="number" name="Fbs" class="form-control">
+</div>
+
+<div class="col-md-4 mt-2">
+<label>RestECG</label>
+<select name="RestECG" class="form-control">
+<option>normal</option>
+<option>abnormal</option>
+</select>
+</div>
+
+<div class="col-md-4 mt-2">
+<label>MaxHR</label>
+<input type="number" name="MaxHR" class="form-control">
+</div>
+
+<div class="col-md-4 mt-2">
+<label>ExAng</label>
+<select name="ExAng" class="form-control">
+<option>yes</option>
+<option>no</option>
+</select>
+</div>
+
+<div class="col-md-4 mt-2">
+<label>Oldpeak</label>
+<input type="number" step="0.1" name="Oldpeak" class="form-control">
+</div>
+
+<div class="col-md-4 mt-2">
+<label>Slope</label>
+<select name="Slope" class="form-control">
+<option>up</option>
+<option>flat</option>
+<option>down</option>
+</select>
+</div>
+
+<div class="col-md-4 mt-2">
+<label>Ca</label>
+<input type="number" name="Ca" class="form-control">
+</div>
+
+<div class="col-md-4 mt-2">
+<label>Thal</label>
+<select name="Thal" class="form-control">
+<option>normal</option>
+<option>fixed</option>
+<option>reversible</option>
+</select>
+</div>
+
+</div>
+
+<div class="text-center mt-4">
+<button class="btn btn-danger btn-lg">Predict</button>
+</div>
+
+</form>
+
+{% if prediction_text %}
+<div class="text-center mt-4">
+<h3>{{ prediction_text }}</h3>
+<h4>Probability: {{ probability }}%</h4>
+</div>
+{% endif %}
+
+</div>
+</div>
+
+</body>
+</html>
